@@ -4,7 +4,7 @@ An AI-native CRM for D2C brands, featuring intelligent shopper segmentation, per
 
 ## Prerequisites
 - Docker & Docker Compose installed on your machine.
-- An API key from [Groq](https://console.groq.com/keys) (for the LLM reasoning) and/or [Google Gemini](https://aistudio.google.com/) (for embeddings). *If you don't provide them, the app will gracefully fall back to mock data so you can still test it!*
+- An API key from [Groq](https://console.groq.com/keys) (for the LLM reasoning) and/or [Google Gemini](https://aistudio.google.com/) (for embeddings). 
 
 ## How to Run the Application
 
