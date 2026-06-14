@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+celery
+redis
+pydantic
+pydantic-settings
+python-dotenv
+google-generativeai
+groq
+httpx
+numpy
