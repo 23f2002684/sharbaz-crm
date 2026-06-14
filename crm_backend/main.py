@@ -228,3 +228,12 @@ def get_predictive_analytics(db: Session = Depends(get_db)):
             "new_or_inactive": new_or_inactive if new_or_inactive > 0 else 0
         }
     }
+
+@app.get("/api/seed")
+def seed_database():
+    try:
+        from seed import seed_db
+        seed_db()
+        return {"status": "success", "message": "Database seeded successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
