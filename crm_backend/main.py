@@ -55,7 +55,7 @@ def generate_draft(req: schemas.DraftRequest):
     return {"draft": draft}
 
 @app.post("/api/campaigns")
-def create_campaign(campaign: schemas.CampaignCreate, db: Session = Depends(get_db)):
+def create_campaign(campaign: schemas.CampaignCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     db_campaign = models.Campaign(
         name=campaign.name,
         segment_query=campaign.segment_query,
@@ -66,8 +66,9 @@ def create_campaign(campaign: schemas.CampaignCreate, db: Session = Depends(get_
     db.commit()
     db.refresh(db_campaign)
     
-    # Fire celery task
-    execute_campaign_task.delay(db_campaign.id)
+    # Run campaign execution in background via FastAPI BackgroundTasks (bypassing Celery/Redis)
+    from celery_app import execute_campaign_task
+    background_tasks.add_task(execute_campaign_task, db_campaign.id)
     
     return {"status": "Campaign Queued", "campaign_id": db_campaign.id}
 
