@@ -39,6 +39,7 @@ docker-compose exec crm_backend python seed.py
 - **Frontend Dashboard:** [http://localhost:5173](http://localhost:5173)
 - **CRM Backend API Docs (Swagger UI):** [http://localhost:8000/docs](http://localhost:8000/docs)
 - **Stub Channel API Docs:** [http://localhost:8001/docs](http://localhost:8001/docs)
+- **Deployed at:** [https://sharbaz-crm-1.onrender.com/](https://sharbaz-crm-1.onrender.com/)
 
 ## System Architecture Highlights
 - **Distributed Architecture:** The Campaign dispatcher runs in the background (Celery) to prevent API blocking. The external "Channel Service" mocks actual delivery delays and failures, pinging our CRM asynchronously.
